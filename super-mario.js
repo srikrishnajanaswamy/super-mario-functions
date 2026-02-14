@@ -19,6 +19,15 @@ function draw() {
   updateJump();
 
   drawPlayer();
+
+  let xPosCircle = 350
+  drawCoin(xPosCircle);
+  
+  drawSun();
+  
+  clouds(40);
+  
+  moveClouds(40);
 }
 
 // ==================================================
@@ -32,17 +41,17 @@ function jump() {
 }
 
 function keyPressed() {
-  if (key === " ") jump();
+  if (keyIsDown(32)) jump();
 
-  if(key === "d") moveRight();
+  if(keyIsDown(68)) moveRight();
   
-  if(key === "a") moveLeft()
+  if(keyIsDown(65)) moveLeft()
 }
 function moveRight() {
-  x += 5;
+  x += 10;
 }
 function moveLeft() {
-  x -= 5;
+  x -= 10;
 }
 
 // ==================================================
@@ -67,6 +76,27 @@ function updateJump() {
 // 🎨 DRAW PLAYER
 // ==================================================
 function drawPlayer() {
-  fill(255, 60, 60);
+  fill(255, 100, 60);
   rect(x, y, 40, 40);
+}
+function drawCoin(x) {
+  fill(255, 200, 60);
+  ellipse(x, y, 60, 60);
+
+}
+function drawSun() {
+  noStroke();
+  fill(255, 100, 60);
+  ellipse(0,0,100)
+}
+function clouds(xPos) {
+  fill(255,255,255);
+  rect(xPos, -20, 40, 80);
+  rect(xPos+20, 20, 40, 80);
+  rect(xPos+40, 10, 40, 80);
+  xPos++;
+}
+
+function collides() {
+  
 }
